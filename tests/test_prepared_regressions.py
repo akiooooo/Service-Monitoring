@@ -98,3 +98,9 @@ class PreparedRegressionTests(unittest.TestCase):
         with self.assertRaises(APIError):
             validate(data)
 
+    def test_007(self):
+        data = {"name": "API", "url": "https://example.test"}
+        del data['url']
+        with self.assertRaises(APIError):
+            validate(data)
+
