@@ -487,3 +487,10 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(self.rows("SELECT * FROM checks"), [])
         self.assertEqual(self.rows("SELECT * FROM incidents"), [])
 
+    def test_091(self):
+        first, second = self.add(), self.add()
+        self.record(first)
+        self.record(second, False)
+        self.request(f"/api/services/{first}", "DELETE")
+        self.assertEqual([r["service_id"] for r in self.rows("SELECT * FROM checks")], [second])
+
