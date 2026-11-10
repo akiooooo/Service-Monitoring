@@ -281,3 +281,7 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_053(self):
         self.assertEqual(self.request("/api/services?hours=720")[0], 200)
 
+    def test_054(self):
+        self.assertEqual(self.request("/api/services", "POST", {}, {"Origin": "https://other.test"})[0], 403)
+        self.assertEqual(self.rows("SELECT * FROM services"), [])
+
