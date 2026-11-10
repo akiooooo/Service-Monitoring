@@ -285,3 +285,6 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(self.request("/api/services", "POST", {}, {"Origin": "https://other.test"})[0], 403)
         self.assertEqual(self.rows("SELECT * FROM services"), [])
 
+    def test_055(self):
+        self.assertEqual(self.request("/api/services", "POST", headers={"Content-Type": "application/x-www-form-urlencoded"}, raw=b"name=API")[0], 415)
+
