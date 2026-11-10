@@ -448,3 +448,9 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(self.add(), False, error=None)
         self.assertTrue(self.rows("SELECT * FROM incidents")[0]["reason"])
 
+    def test_085(self):
+        self.record(self.add(), False, status_code=None, error="Timeout")
+        row = self.rows("SELECT * FROM checks")[0]
+        self.assertIsNone(row["status_code"])
+        self.assertEqual(row["error"], "Timeout")
+
