@@ -326,3 +326,7 @@ class PreparedRegressionTests(unittest.TestCase):
         service = self.request("/api/services")[1][0]
         self.assertEqual((service["status"], service["uptime"], service["total"]), ("pending", None, 0))
 
+    def test_064(self):
+        self.record(self.add())
+        self.assertEqual(self.request("/api/services")[1][0]["status"], "up")
+
