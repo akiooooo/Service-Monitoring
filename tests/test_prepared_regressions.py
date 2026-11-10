@@ -321,3 +321,8 @@ class PreparedRegressionTests(unittest.TestCase):
         self.monitor.submit.return_value = False
         self.assertEqual(self.request(f"/api/services/{sid}/check", "POST", {})[0], 409)
 
+    def test_063(self):
+        self.add()
+        service = self.request("/api/services")[1][0]
+        self.assertEqual((service["status"], service["uptime"], service["total"]), ("pending", None, 0))
+
