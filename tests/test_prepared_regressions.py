@@ -272,3 +272,6 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_050(self):
         self.assertEqual(self.request("/api/services?hours=721")[0], 400)
 
+    def test_051(self):
+        self.assertEqual(self.request("/api/services?hours=abc")[0], 400)
+
