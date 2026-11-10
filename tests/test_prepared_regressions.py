@@ -72,3 +72,8 @@ class PreparedRegressionTests(unittest.TestCase):
         finally:
             monitor.pool.shutdown(wait=True)
 
+    def test_002(self):
+        with self.assertRaises(APIError) as error:
+            validate([])
+        self.assertEqual(error.exception.status, 400)
+
