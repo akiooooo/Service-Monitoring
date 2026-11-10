@@ -474,3 +474,8 @@ class PreparedRegressionTests(unittest.TestCase):
                 raise RuntimeError("rollback")
         self.assertEqual(self.db.service(sid)["name"], "Сервис")
 
+    def test_089(self):
+        with self.assertRaises(sqlite3.IntegrityError):
+            with self.db.connect() as conn:
+                conn.execute("INSERT INTO checks(service_id,checked_at,ok,response_ms) VALUES(999,'2026',1,1)")
+
