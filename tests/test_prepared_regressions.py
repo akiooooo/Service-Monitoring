@@ -348,3 +348,10 @@ class PreparedRegressionTests(unittest.TestCase):
         self.add(category="Frontend")
         self.assertEqual([s["category"] for s in self.request("/api/services?category=Backend")[1]], ["Backend"])
 
+    def test_069(self):
+        sid = self.add()
+        for ok in (True, False, True):
+            self.record(sid, ok)
+        service = self.request("/api/services")[1][0]
+        self.assertEqual((service["total"], service["successful"], service["uptime"]), (3, 2, 66.67))
+
