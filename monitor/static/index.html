@@ -10,96 +10,48 @@
   </head>
   <body>
     <aside class="sidebar">
-      <a class="brand" href="/">▥ <span>пульс<span class="brand-dot">.</span>
-      </span>
-    </a>
-    <div class="workspace">ЛИЧНЫЙ ПРОЕКТ <span>LOCAL</span>
-    </div>
-    <a class="nav active" href="/">◫ &nbsp; Обзор сервисов</a>
-    <div class="side-note">
-      <span class="live-dot">
-      </span> Мониторинг работает<p>Проверки продолжаются,<br>пока запущен сервер.</p>
-    </div>
-    <div class="sidebar-bottom">Пульс / Service monitoring<br>
-      <span>Учебный проект · v1.0</span>
-    </div>
-  </aside>
-  <main>
-    <header>
-      <div class="breadcrumb">Рабочее пространство <span>/</span> Мониторинг</div>
-      <div class="header-right">
-        <span id="sync">Подключение…</span>
-        <span class="avatar">ЛК</span>
-      </div>
-    </header>
-    <section class="content">
-      <div class="page-heading">
-        <div>
-          <div class="eyebrow">ИНФРАСТРУКТУРА ПОД КОНТРОЛЕМ</div>
-          <h1>Обзор сервисов</h1>
-          <p>Доступность, время отклика и история работы — в одном месте.</p>
+      <a class="brand" href="/">▥ <span>пульс<span class="brand-dot">.</span></span></a>
+      <div class="workspace">ЛИЧНЫЙ ПРОЕКТ <span>LOCAL</span></div>
+      <a class="nav active" href="/">◫ &nbsp; Обзор сервисов</a>
+      <div class="side-note"><span class="live-dot"></span> Мониторинг работает<p>Проверки продолжаются,<br>пока запущен сервер.</p></div>
+      <div class="sidebar-bottom">Пульс / Service monitoring<br><span>Учебный проект · v1.0</span></div>
+    </aside>
+    <main>
+      <header>
+        <div class="breadcrumb">Рабочее пространство <span>/</span> Мониторинг</div>
+        <div class="header-right"><span id="sync">Подключение…</span><span class="avatar">ЛК</span></div>
+      </header>
+      <section class="content">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">ИНФРАСТРУКТУРА ПОД КОНТРОЛЕМ</div>
+            <h1>Обзор сервисов</h1>
+            <p>Доступность, время отклика и история работы — в одном месте.</p>
+          </div>
+          <button class="primary" id="add">＋ Добавить сервис</button>
         </div>
-        <button class="primary" id="add">＋ Добавить сервис</button>
-      </div>
-      <div class="overview-line">
-        <span id="overall" class="pill neutral">Нет данных</span>
-        <span>Обновление каждые 5 секунд</span>
-        <label class="period-label">Период <select id="period">
-          <option value="24">24 часа</option>
-          <option value="168">7 дней</option>
-          <option value="720">30 дней</option>
-        </select>
-      </label>
-    </div>
-    <div class="stats">
-      <article>
-        <span>Всего сервисов</span>
-        <strong id="total">0</strong>
-        <small>Зарегистрировано в системе</small>
-      </article>
-      <article>
-        <span>
-          <i class="dot green">
-          </i> Доступны сейчас</span>
-          <strong id="up">0</strong>
-          <small>Последняя проверка успешна</small>
-        </article>
-        <article>
-          <span>
-            <i class="dot red">
-            </i> Недоступны</span>
-            <strong id="down">0</strong>
-            <small>Требуют внимания</small>
-          </article>
-          <article>
-            <span>Доступность за период</span>
-            <strong id="uptime">—</strong>
-            <small id="avg">Ожидание результатов</small>
-          </article>
+        <div class="overview-line">
+          <span id="overall" class="pill neutral">Нет данных</span>
+          <span>Обновление каждые 5 секунд</span>
+          <label class="period-label">
+            Период
+            <select id="period"><option value="24">24 часа</option><option value="168">7 дней</option><option value="720">30 дней</option></select>
+          </label>
+        </div>
+        <div class="stats">
+          <article><span>Всего сервисов</span><strong id="total">0</strong><small>Зарегистрировано в системе</small></article>
+          <article><span><i class="dot green"></i> Доступны сейчас</span><strong id="up">0</strong><small>Последняя проверка успешна</small></article>
+          <article><span><i class="dot red"></i> Недоступны</span><strong id="down">0</strong><small>Требуют внимания</small></article>
+          <article><span>Доступность за период</span><strong id="uptime">—</strong><small id="avg">Ожидание результатов</small></article>
         </div>
         <div class="section-heading">
-          <div>
-            <h2>Ваши сервисы <span id="count" class="count">0</span>
-            </h2>
-            <p>Текущее состояние контролируемых ресурсов</p>
-          </div>
+          <div><h2>Ваши сервисы <span id="count" class="count">0</span></h2><p>Текущее состояние контролируемых ресурсов</p></div>
           <a class="export" id="export" href="/api/report.csv?hours=24">↓ &nbsp; Скачать отчёт</a>
         </div>
         <div class="filters">
-          <label class="search">
-            <span>⌕</span>
-            <input id="search" type="search" placeholder="Найти по названию или URL" aria-label="Поиск сервисов">
-          </label>
-          <select id="status" aria-label="Статус">
-            <option value="">Все статусы</option>
-            <option value="up">Доступен</option>
-            <option value="down">Недоступен</option>
-            <option value="pending">Ожидает проверки</option>
-            <option value="paused">На паузе</option>
-          </select>
-          <select id="category" aria-label="Группа">
-            <option value="">Все группы</option>
-          </select>
+          <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Найти по названию или URL" aria-label="Поиск сервисов"></label>
+          <select id="status" aria-label="Статус"><option value="">Все статусы</option><option value="up">Доступен</option><option value="down">Недоступен</option><option value="pending">Ожидает проверки</option><option value="paused">На паузе</option></select>
+          <select id="category" aria-label="Группа"><option value="">Все группы</option></select>
         </div>
         <div class="table-wrap">
           <table>
@@ -110,8 +62,7 @@
                 <th>ОТКЛИК</th>
                 <th>ДОСТУПНОСТЬ</th>
                 <th>ПОСЛЕДНЯЯ ПРОВЕРКА</th>
-                <th>
-                </th>
+                <th></th>
               </tr>
             </thead>
             <tbody id="services">
@@ -124,83 +75,45 @@
             <button id="empty-add" class="primary">＋ Добавить сервис</button>
           </div>
         </div>
-        <div class="footnote">
-          <span>● &nbsp; HTTP / HTTPS проверки</span>
-          <span>Время отображается в часовом поясе браузера</span>
-        </div>
+        <div class="footnote"><span>● &nbsp; HTTP / HTTPS проверки</span><span>Время отображается в часовом поясе браузера</span></div>
         <section id="detail" class="detail" hidden>
           <div class="section-heading">
             <div>
               <div class="eyebrow">ПОДРОБНОСТИ СЕРВИСА</div>
-              <h2 id="detail-title">
-              </h2>
-              <p id="detail-url">
-              </p>
+              <h2 id="detail-title"></h2>
+              <p id="detail-url"></p>
             </div>
             <button id="close-detail" class="secondary">Закрыть ×</button>
           </div>
-          <div class="detail-actions">
-            <button id="check" class="primary">Проверить сейчас</button>
-            <button id="edit" class="secondary">Редактировать</button>
-            <button id="pause" class="secondary">Пауза</button>
-            <button id="delete" class="danger">Удалить</button>
-            <span id="settings">
-            </span>
-          </div>
-          <div class="chart-card">
-            <h3>Время отклика <span>мс · последние 500 проверок за период</span>
-            </h3>
-            <canvas id="chart" height="200" aria-label="График времени отклика" role="img">
-            </canvas>
-            <p id="chart-note">
-            </p>
-          </div>
+          <div class="detail-actions"><button id="check" class="primary">Проверить сейчас</button><button id="edit" class="secondary">Редактировать</button><button id="pause" class="secondary">Пауза</button><button id="delete" class="danger">Удалить</button><span id="settings"></span></div>
+          <div class="chart-card"><h3>Время отклика <span>мс · последние 500 проверок за период</span></h3><canvas id="chart" height="200" aria-label="График времени отклика" role="img"></canvas><p id="chart-note"></p></div>
           <div class="history-grid">
             <div>
               <h3>Последние проверки</h3>
-              <div id="checks" class="history-list">
-              </div>
+              <div id="checks" class="history-list"></div>
             </div>
             <div>
-              <h3>Инциденты <span class="muted">за период</span>
-              </h3>
-              <div id="incidents" class="history-list">
-              </div>
+              <h3>Инциденты <span class="muted">за период</span></h3>
+              <div id="incidents" class="history-list"></div>
             </div>
           </div>
         </section>
-        <footer>Пульс <span>Наблюдайте. Анализируйте. Улучшайте.</span>
-        </footer>
+        <footer>Пульс <span>Наблюдайте. Анализируйте. Улучшайте.</span></footer>
       </section>
     </main>
     <dialog id="modal">
       <form id="form">
-        <div class="modal-heading">
-          <h2 id="modal-title">Новый сервис</h2>
-          <button type="button" id="cancel" class="icon-btn" aria-label="Закрыть">×</button>
-        </div>
+        <div class="modal-heading"><h2 id="modal-title">Новый сервис</h2><button type="button" id="cancel" class="icon-btn" aria-label="Закрыть">×</button></div>
         <p>Укажите адрес и параметры проверки.</p>
-        <label>Название<input name="name" required maxlength="100" placeholder="Например, API магазина">
-        </label>
-        <label>Адрес сервиса<input name="url" required type="url" maxlength="2000" placeholder="https://example.com/health">
-        </label>
-        <label>Группа<input name="category" required maxlength="50" value="Основные">
-        </label>
-        <div class="form-grid">
-          <label>Интервал, сек<input name="interval" required type="number" min="10" max="86400" value="60">
-          </label>
-          <label>Таймаут, сек<input name="timeout" required type="number" min="1" max="60" value="5">
-          </label>
-          <label>Ожидаемый код<input name="expected_code" required type="number" min="100" max="599" value="200">
-          </label>
-        </div>
+        <label>Название<input name="name" required maxlength="100" placeholder="Например, API магазина"></label>
+        <label>Адрес сервиса<input name="url" required type="url" maxlength="2000" placeholder="https://example.com/health"></label>
+        <label>Группа<input name="category" required maxlength="50" value="Основные"></label>
+        <div class="form-grid"><label>Интервал, сек<input name="interval" required type="number" min="10" max="86400" value="60"></label><label>Таймаут, сек<input name="timeout" required type="number" min="1" max="60" value="5"></label><label>Ожидаемый код<input name="expected_code" required type="number" min="100" max="599" value="200"></label></div>
         <p class="form-hint">Редиректы не выполняются. Если адрес возвращает 301 или 302, укажите этот код либо конечный URL.</p>
-        <p id="form-error" role="alert">
-        </p>
+        <p id="form-error" role="alert"></p>
         <button class="primary save" type="submit">Сохранить сервис</button>
       </form>
     </dialog>
-    <div id="toast" role="status" hidden>
-    </div>
+    <div id="toast" role="status" hidden></div>
   </body>
 </html>
