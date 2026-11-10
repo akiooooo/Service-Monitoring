@@ -431,3 +431,10 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertIsNotNone(rows[0]["resolved_at"])
         self.assertIsNone(rows[1]["resolved_at"])
 
+    def test_082(self):
+        first, second = self.add(), self.add()
+        self.record(first, False)
+        self.record(second, False)
+        self.record(first)
+        self.assertIsNone(self.rows("SELECT * FROM incidents WHERE service_id=?", (second,))[0]["resolved_at"])
+
