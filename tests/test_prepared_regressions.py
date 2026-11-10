@@ -422,3 +422,12 @@ class PreparedRegressionTests(unittest.TestCase):
             self.record(sid)
         self.assertEqual(self.rows("SELECT * FROM incidents"), [])
 
+    def test_081(self):
+        sid = self.add()
+        for ok in (False, True, False):
+            self.record(sid, ok)
+        rows = self.rows("SELECT * FROM incidents ORDER BY id")
+        self.assertEqual(len(rows), 2)
+        self.assertIsNotNone(rows[0]["resolved_at"])
+        self.assertIsNone(rows[1]["resolved_at"])
+
