@@ -249,3 +249,8 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(status, 201)
         self.assertEqual(self.db.service(body["id"])["name"], "API")
 
+    def test_044(self):
+        sid = self.add(category="Backend")
+        status, body, _ = self.request(f"/api/services/{sid}")
+        self.assertEqual((status, body["category"], body["timeout"]), (200, "Backend", 5))
+
