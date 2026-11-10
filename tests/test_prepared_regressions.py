@@ -531,3 +531,9 @@ class PreparedRegressionTests(unittest.TestCase):
         row = self.request("/api/services?hours=1")[1][0]
         self.assertEqual((row["total"], row["uptime"]), (1, 100))
 
+    def test_098(self):
+        sid = self.add()
+        with self.db.connect() as conn:
+            conn.execute("INSERT INTO incidents(service_id,started_at,reason) VALUES(?,'2000-01-01','old failure')", (sid,))
+        self.assertEqual(len(self.request(f"/api/services/{sid}/history?hours=1")[1]["incidents"]), 1)
+
