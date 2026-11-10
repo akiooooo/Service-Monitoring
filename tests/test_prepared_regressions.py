@@ -334,3 +334,7 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(self.add(), False)
         self.assertEqual(self.request("/api/services")[1][0]["status"], "down")
 
+    def test_066(self):
+        self.record(self.add(enabled=False), False)
+        self.assertEqual(self.request("/api/services?status=paused")[1][0]["status"], "paused")
+
