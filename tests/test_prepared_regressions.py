@@ -512,3 +512,9 @@ class PreparedRegressionTests(unittest.TestCase):
         rows = list(csv.reader(io.StringIO(body.decode("utf-8-sig")), delimiter=";"))
         self.assertTrue(rows[1][0].startswith("'" + '-'))
 
+    def test_095(self):
+        self.add(name='@SUM(1)')
+        body = self.request("/api/report.csv")[1]
+        rows = list(csv.reader(io.StringIO(body.decode("utf-8-sig")), delimiter=";"))
+        self.assertTrue(rows[1][0].startswith("'" + '@'))
+
