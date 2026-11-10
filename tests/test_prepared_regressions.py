@@ -479,3 +479,11 @@ class PreparedRegressionTests(unittest.TestCase):
             with self.db.connect() as conn:
                 conn.execute("INSERT INTO checks(service_id,checked_at,ok,response_ms) VALUES(999,'2026',1,1)")
 
+    def test_090(self):
+        sid = self.add()
+        self.record(sid, False)
+        with self.db.connect() as conn:
+            conn.execute("DELETE FROM services WHERE id=?", (sid,))
+        self.assertEqual(self.rows("SELECT * FROM checks"), [])
+        self.assertEqual(self.rows("SELECT * FROM incidents"), [])
+
