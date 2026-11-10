@@ -388,3 +388,6 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(headers["Cache-Control"], "no-store")
         self.assertIn("frame-ancestors 'none'", headers["Content-Security-Policy"])
 
+    def test_075(self):
+        self.assertEqual(self.request("/../monitor/database.py")[0], 404)
+
