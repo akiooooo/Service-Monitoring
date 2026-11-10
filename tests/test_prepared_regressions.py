@@ -229,3 +229,7 @@ class PreparedRegressionTests(unittest.TestCase):
         data = validate({"name": "API", "url": "https://example.test"})
         self.assertEqual((data["interval"], data["timeout"], data["expected_code"], data["enabled"]), (60, 5, 200, 1))
 
+    def test_039(self):
+        url = "https://xn--e1afmkfd.xn--p1ai/health?ready=1"
+        self.assertEqual(validate({"name": "API", "url": url})["url"], url)
+
