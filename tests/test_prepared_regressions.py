@@ -444,3 +444,7 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(sid, False, error="Timeout")
         self.assertEqual(self.rows("SELECT * FROM incidents")[0]["reason"], "DNS failure")
 
+    def test_084(self):
+        self.record(self.add(), False, error=None)
+        self.assertTrue(self.rows("SELECT * FROM incidents")[0]["reason"])
+
