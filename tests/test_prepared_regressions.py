@@ -266,3 +266,6 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_048(self):
         self.assertEqual(self.request('/api/missing')[0], 404)
 
+    def test_049(self):
+        self.assertEqual(self.request("/api/services?hours=0")[0], 400)
+
