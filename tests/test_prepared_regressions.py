@@ -361,3 +361,11 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(sid, response_ms=30)
         self.assertEqual(self.request("/api/services")[1][0]["avg_ms"], 20)
 
+    def test_071(self):
+        sid = self.add()
+        self.record(sid)
+        self.record(self.add(), False)
+        history = self.request(f"/api/services/{sid}/history")[1]
+        self.assertEqual([c["service_id"] for c in history["checks"]], [sid])
+        self.assertEqual(history["incidents"], [])
+
