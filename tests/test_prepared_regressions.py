@@ -244,3 +244,8 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_042(self):
         self.assertEqual(self.request("/api/services")[:2], (200, []))
 
+    def test_043(self):
+        status, body, _ = self.request("/api/services", "POST", {"name": "API", "url": "https://example.test"})
+        self.assertEqual(status, 201)
+        self.assertEqual(self.db.service(body["id"])["name"], "API")
+
