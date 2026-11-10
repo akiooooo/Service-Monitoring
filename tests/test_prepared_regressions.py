@@ -376,3 +376,9 @@ class PreparedRegressionTests(unittest.TestCase):
                 [(sid, "2099-01-01T00:00:00+00:00")]*505)
         self.assertEqual(len(self.request(f"/api/services/{sid}/history")[1]["checks"]), 500)
 
+    def test_073(self):
+        status, body, headers = self.request("/api/report.csv")
+        self.assertEqual(status, 200)
+        self.assertTrue(body.startswith(b"\xef\xbb\xbf"))
+        self.assertIn("attachment", headers["Content-Disposition"])
+
