@@ -382,3 +382,9 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertTrue(body.startswith(b"\xef\xbb\xbf"))
         self.assertIn("attachment", headers["Content-Disposition"])
 
+    def test_074(self):
+        _, _, headers = self.request("/api/health")
+        self.assertEqual(headers["X-Content-Type-Options"], "nosniff")
+        self.assertEqual(headers["Cache-Control"], "no-store")
+        self.assertIn("frame-ancestors 'none'", headers["Content-Security-Policy"])
+
