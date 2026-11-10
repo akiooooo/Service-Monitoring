@@ -355,3 +355,9 @@ class PreparedRegressionTests(unittest.TestCase):
         service = self.request("/api/services")[1][0]
         self.assertEqual((service["total"], service["successful"], service["uptime"]), (3, 2, 66.67))
 
+    def test_070(self):
+        sid = self.add()
+        self.record(sid, response_ms=10)
+        self.record(sid, response_ms=30)
+        self.assertEqual(self.request("/api/services")[1][0]["avg_ms"], 20)
+
