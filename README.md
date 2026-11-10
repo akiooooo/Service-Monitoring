@@ -165,3 +165,7 @@ HTTP-таймаут ограничивает сетевое ожидание, н
 - [sqlite3](https://docs.python.org/3/library/sqlite3.html)
 - [HTTP на MDN](https://developer.mozilla.org/ru/docs/Web/HTTP)
 - [SQLite](https://www.sqlite.org/docs.html)
+
+## Подготовленные улучшения
+
+[Список 100 проверенных изменений и порядок публикации](docs/prepared-improvements.md). Большинство шагов добавляет регрессионные тесты; исправления публикуются с проверками по расписанию.

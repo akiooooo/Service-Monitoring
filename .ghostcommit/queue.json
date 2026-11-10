@@ -1,0 +1,909 @@
+{
+  "version": 1,
+  "branch": "prepared-improvements",
+  "baseline": "47bac63e69ab4e39532cfe2c1c6e17a6b408e160",
+  "entries": [
+    {
+      "number": 1,
+      "commit": "37a3d39ea00dab51002a5115589fce4cab0f348e",
+      "title": "Исправлена блокировка проверок при ошибке базы",
+      "files": [
+        "monitor/checker.py",
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "520203e7a91ab546f912af50854239f4a5487a3b040e085ca0715b1e13c5cf7e"
+    },
+    {
+      "number": 2,
+      "commit": "a27bcc1eaba69ba2ed2aeb0a3d97794b878688a7",
+      "title": "Тест запроса с массивом вместо объекта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c66af872febe04c6271ef3add8aae66fa7c3014ef5e0393201a7f72783e412d0"
+    },
+    {
+      "number": 3,
+      "commit": "9ddf3b5f5280674feeb4526d007acce071c0fd5b",
+      "title": "Тест запроса со строкой вместо объекта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "1f764e94b4ddfcc32f7710b6360b60f272ad6e3b7a897682a716f549dd6ef081"
+    },
+    {
+      "number": 4,
+      "commit": "e19e41d4975199217a8eaaf1427003e9f44cbd20",
+      "title": "Тест запроса с числом вместо объекта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "60a1556ef9d62b6385e3dad3d9fe985190ff0b1370a1a95cad08576a977459dc"
+    },
+    {
+      "number": 5,
+      "commit": "e279d35664f6de65f4ecb369eb82ab70dd4567b3",
+      "title": "Тест запроса с логическим значением",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "2ae608b9c677bfa2c8808a91691cc60c754d74f6ef9f20a687bd0c565bead2fb"
+    },
+    {
+      "number": 6,
+      "commit": "47664e80b03439ed6a1524836f95b05ee8ec1242",
+      "title": "Проверка обязательного имени сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "688b545141b732e9a37348ad221b1a74c6d3a21354a73e4f48ce918414212f82"
+    },
+    {
+      "number": 7,
+      "commit": "9dc2b000f7cf36af2d76254e839e5741ef11373b",
+      "title": "Проверка обязательного адреса сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "63daf4f1b8260078e1a3fc26f5e327295e013759669301eeda68ec33dd45d66d"
+    },
+    {
+      "number": 8,
+      "commit": "26c5d473dde576c4409d6cbedf3c87e9204e1fcd",
+      "title": "Тест имени из пробелов",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "b0e62257b009322bfd0a9caab0147002c2039d92599c16ace8ecba0d4907b385"
+    },
+    {
+      "number": 9,
+      "commit": "dad2bdc5b4f36dda48e5a15e39a6ecd9430a6997",
+      "title": "Проверка длины имени сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "140117e9ad75af8d5d58ede47b9168bf9b989beb49dc223351c5e91cc6a79520"
+    },
+    {
+      "number": 10,
+      "commit": "eccd5486c44d4fea3fa721f153458cb94ff6eb84",
+      "title": "Тест пустой категории",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "e0c66e91c228f28273ffe2a7c165c2a2aae9982012bf0d5b673433aacb2dc20d"
+    },
+    {
+      "number": 11,
+      "commit": "43b6cb052c53b0bc917d1a7a4b601e0758f9c50a",
+      "title": "Проверка длины категории",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c7bc4e1289240f7bc6d483606295b72e7af8530c0dd346a29df73a9e13044924"
+    },
+    {
+      "number": 12,
+      "commit": "178fd7c562f326bbefb9a9ad05b670b8fa9cb3d0",
+      "title": "Тест числового имени сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "fc78092b3b1b6aad76b321992767f5932c64d4077bc89fac7bb3684e9e82e885"
+    },
+    {
+      "number": 13,
+      "commit": "d53a7797946a3445c1388f43501a1a62dfbcfac1",
+      "title": "Тест категории с неверным типом",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "4a82a5293a6b98a5fab6ecc312c5d2c61be3a7fc26a38c3b23bf51be5529d961"
+    },
+    {
+      "number": 14,
+      "commit": "f51a7d2f7364588e7b433eac92bf6f8d2a2d21d6",
+      "title": "Тест адреса со значением null",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "b66757bc015e9304ac9d9798d2d3bfa22b1cd8a4e63744cede47c4521efefcc6"
+    },
+    {
+      "number": 15,
+      "commit": "e7dc708e7fa59674e45e8f06fbfa5e3d104ff420",
+      "title": "Проверка длины адреса сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "7fcde1fa6370cc272017bd1834e5fec26253a5346b97940bde25f4b315640fcc"
+    },
+    {
+      "number": 16,
+      "commit": "46c949d19454a14161203ed65b996234b3f56d58",
+      "title": "Тест неподдерживаемого протокола FTP",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "cf06bff8662596723578055067d53a8de22cfd9b6e48d9b2a634559dc14d1fb6"
+    },
+    {
+      "number": 17,
+      "commit": "9b2464e8c80be4553134d7e81cb772d6fefab66b",
+      "title": "Запрет локальных файлов в адресе сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "164745b8bf913eb899b356c1f9821fbf8892a5f2645e79b0749f871f0af214aa"
+    },
+    {
+      "number": 18,
+      "commit": "d9539153531470f3c435207a62e2c809dce38026",
+      "title": "Тест адреса с паролем",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "b32f7415d5fa31b4472688a66c39733b43bf6dd4baf275f370973a6a15562dbd"
+    },
+    {
+      "number": 19,
+      "commit": "e183be30ec8785e11f0930128a5b689fa2b1c5d0",
+      "title": "Тест адреса с именем пользователя",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "565cd78f1e0ad5e0f1c31a9ab46556255862ed155ff8acd82995c0d32396f2a5"
+    },
+    {
+      "number": 20,
+      "commit": "e7715d6aee241d42f4349f7ffa7adfea41337f31",
+      "title": "Проверка фрагмента в адресе сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "43f7b90bd737e4ba117f38f603c5d2bc223a333e3be20d0e60718a18b762443d"
+    },
+    {
+      "number": 21,
+      "commit": "f24b2c21e77616f67ab42ca0cdd01334b52117ce",
+      "title": "Проверка верхней границы порта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "08b58ba2cf6fdc79156fe6191a8ee3b872af6a707fb197edb0e081ad7d3e0ff1"
+    },
+    {
+      "number": 22,
+      "commit": "3a1b7069ca5cfa84b9530ac0a92164333b1aa7de",
+      "title": "Тест нечислового порта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "1f32e75e00ba1cfff031cff755c93b569ab5db4cdcc1c7999d7aaec60c25c01c"
+    },
+    {
+      "number": 23,
+      "commit": "eba0ec2a0d28e74d3c48ee0c906219e60616d7e7",
+      "title": "Тест адреса без хоста",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "f5716552f4b4c8b134f41a12cce0742ab28990b71a945a56672c887ef64de158"
+    },
+    {
+      "number": 24,
+      "commit": "a48309923750c5bcc550745c370c86595d6c1356",
+      "title": "Проверка домена с кириллицей",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "53e621f421cc236c9547ef5a259df3047da46821700f76ea47e7feb720743c93"
+    },
+    {
+      "number": 25,
+      "commit": "ea6ab53b680943b6199e88a4439a514b7a68badc",
+      "title": "Тест пробела в адресе",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "0cf32bbf7d349dd5a4830b5d76fe327c9573c113eff8ef2e5547e0de93cbb99b"
+    },
+    {
+      "number": 26,
+      "commit": "419d74f5990babf5406fc4829dc321ea151fbd98",
+      "title": "Проверка минимального интервала",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "7059c16b37240100cce07064f34d8d5cb22654c2f489048d1350e4e2e906c8a6"
+    },
+    {
+      "number": 27,
+      "commit": "fe7b1c68a8678ded0b24d71a1c9ae5581424b2c4",
+      "title": "Проверка максимального интервала",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "487eb7399e159dc65dca62af8257fc9fc3b7dbf5549c02e75488ea668a94e0dc"
+    },
+    {
+      "number": 28,
+      "commit": "665a0b7c81da575b17b79a8b4c9dfbdbe45a561f",
+      "title": "Тест нулевого таймаута",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c01ef3fd1c6a9a2bc34d38a53100b48688506584aafa0c3cdce602690da2a1a3"
+    },
+    {
+      "number": 29,
+      "commit": "f6cc46f6b7ab3c8527811f3c9d2c4536521c00c9",
+      "title": "Проверка максимального таймаута",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "776938680e0a432f4421577ea3247ae42b8bafce2c6b5ee8b617f9f0d5fb8b8f"
+    },
+    {
+      "number": 30,
+      "commit": "94c2414cf38ea91a91400ea19a582e493abaa8c2",
+      "title": "Проверка нижней границы HTTP-кода",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "949c838de7c3e2d2779f3f9dcb9dfa9df0222880e9ff5f71ae2c2fbdca86c224"
+    },
+    {
+      "number": 31,
+      "commit": "53d8490cde4edd24e6a1fb7d5bad87ca27b6c3d7",
+      "title": "Проверка верхней границы HTTP-кода",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "0fd01833a805b131e6a6f6e8c3e6d8f60a0ef304679570a1117bdd35ae411938"
+    },
+    {
+      "number": 32,
+      "commit": "063952799a48ab88c317c9ea26a79a65e7e67148",
+      "title": "Тест логического значения интервала",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "86cbca1ef3c98734e34d914135717bcbc253eeb4d7b89d52800deb08b7a21963"
+    },
+    {
+      "number": 33,
+      "commit": "163a764051bc4b14aa50f969b15d69f90f3a78e0",
+      "title": "Тест дробного таймаута",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "bddb14e1b477434f7d075c0e02a3b6812ea237e18c659819d076b8561b15215b"
+    },
+    {
+      "number": 34,
+      "commit": "1ec8db6bd9c581a6b87cbe864104bcf4e442f802",
+      "title": "Тест HTTP-кода в строковом формате",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "466e75a545132e1dfb9b9b817a2a3b1c59110286d97506b1c65759e8d5e957e6"
+    },
+    {
+      "number": 35,
+      "commit": "6e698d308f63ef1c99e7fb32696d2332a3381640",
+      "title": "Тест строкового значения паузы",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "a94f15a15f03513e6b8a1a0bfde5078503e4717beb033989b0b4c7b2dcccf2fc"
+    },
+    {
+      "number": 36,
+      "commit": "e3557df2563c944d960996470a979ebbaeccc981",
+      "title": "Граничные значения настроек сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "d347e0a149e6944a319fa2b7a08378f67f8b635c5acebc885f074d060d6cdbcb"
+    },
+    {
+      "number": 37,
+      "commit": "177e5a0e92b69933f9b50177b4ea84f37888b09e",
+      "title": "Удаление пробелов в настройках сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "570ef3a2a812bde6810411c29a5e3b2dc086e904aa4025e6beaad730723b285a"
+    },
+    {
+      "number": 38,
+      "commit": "2aa92a33d31f992523f6c764cabe1ac3f746ed51",
+      "title": "Проверка настроек по умолчанию",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "33cb96ad4f1c65642ef544530bacaa74021d3b5a1b2d685e1105e9c731663827"
+    },
+    {
+      "number": 39,
+      "commit": "ce74e8dda9fb93718bd5c5adcd990ce0e5f1b7c8",
+      "title": "Тест адреса с punycode и параметрами",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "5647c9406167b190f1743664b953f1403979a8f3e00786271b97496ba4b5aa0e"
+    },
+    {
+      "number": 40,
+      "commit": "229e82a5d5070eec6c476e404d5590cc9bd8a68d",
+      "title": "Тест проверки с интервалом в сутки",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "730e62f89845583a2b6bf30bdfd050d1e265d3ca7f5af60e595d7989f95d9123"
+    },
+    {
+      "number": 41,
+      "commit": "4c41012c0a75951241e96ceff7a7e054224b55d2",
+      "title": "Проверка служебного health endpoint",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "e7c09cdb732718d00efefef542d8a3741ff42fdf58696984e2b5ba35c662ec31"
+    },
+    {
+      "number": 42,
+      "commit": "56b4abc56ee83872b2f7357654cea587efc66fe0",
+      "title": "Список сервисов в пустой базе",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "ff973f3f4e6e2e8c3f9a584a81e1c5f2af22960c1b4f218897a6a8fdef61d6de"
+    },
+    {
+      "number": 43,
+      "commit": "8d403d6a99e6c9d6508f3800aa3c5eb4ca0d735b",
+      "title": "Тест создания сервиса через API",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "21998a23d06e4c271186ce4b5847d814ac3a23f2a12d62fb78505e34cdba343e"
+    },
+    {
+      "number": 44,
+      "commit": "f98d55a36551e2778bc8a72c6f51ce9ba317e569",
+      "title": "Получение настроек отдельного сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "65b0045cfa20fcec3231bb66578597937bf5678693f36d7c914987cda5e3dd29"
+    },
+    {
+      "number": 45,
+      "commit": "64715625f395345e634ee731dae7778a850cf3f2",
+      "title": "Тест запроса неизвестного сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c40ae81886e43b5df07def6088f40a6c58bc94cb78b1f0b1426188ff70c1813c"
+    },
+    {
+      "number": 46,
+      "commit": "47db6ef11e88c4f2bc20ec5ba8c6d7997eeaa6c0",
+      "title": "Тест нечислового идентификатора",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c2a452337b8eaa922a55684a3d22c7a8e51c1c7defbbf4dfd3eb594f6113bb85"
+    },
+    {
+      "number": 47,
+      "commit": "38c768edef21e86770cb70c34e2d2332bdd4d2d4",
+      "title": "Тест истории с отрицательным идентификатором",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "5fd334d00092f78ae06b6293868b2c49e4163b03642e1a5dfa5bb46b9711aa06"
+    },
+    {
+      "number": 48,
+      "commit": "d537b9cc76fa17d71ceb5863d58395c27480dc78",
+      "title": "Тест неизвестного маршрута API",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "7dccf7c94d227e415a44d3b687b041521520d8b691ed551c956d2a1f84263a1f"
+    },
+    {
+      "number": 49,
+      "commit": "f9ce51f75e4c6df0e7965417b7e4c22cade4b846",
+      "title": "Тест нулевого периода отчёта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "e0c9d81c280a2ab62a2b8e3c3ea7acd4fd5b087fffb3fee46eb58acda7e4a705"
+    },
+    {
+      "number": 50,
+      "commit": "18ba47448edc95aac7cabf7ce65eaee3560556d4",
+      "title": "Тест периода отчёта больше месяца",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "4cd954e7baa4bf399c5a6e5707d18fed2b31a7c60129e33371e754632b5ce0ad"
+    },
+    {
+      "number": 51,
+      "commit": "d8b186074791236340769a85eacb1fe47139b756",
+      "title": "Тест текстового периода отчёта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "cc2f5f286b3cac945bb12a1426c0741bb551ba83a1d0d3b47c2fea7112068228"
+    },
+    {
+      "number": 52,
+      "commit": "5fbbbbea896f601a7c6391aa3664156639b021e3",
+      "title": "Тест дробного периода отчёта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "b5a0f8d8cdaacc6b1b66df2710571a74b16616239dfebaaa9f2986f0b56f1e23"
+    },
+    {
+      "number": 53,
+      "commit": "164a2cccd43a5605f37b356bcb362c644e36485a",
+      "title": "Проверка отчёта за 720 часов",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "59c163917f93f4985a81a843a5d677924594019cafbbfbddab622f82b4512a68"
+    },
+    {
+      "number": 54,
+      "commit": "bae214f3d02e4b464bcad4f569b718117dcb3f42",
+      "title": "Тест записи с чужого сайта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "d85acd4b39166a9cc48c3961e8d66d77c8620193d3b80c9135e2eff1b5c93497"
+    },
+    {
+      "number": 55,
+      "commit": "d609878854c06a1e8380f6f86c3800aaf9f40e13",
+      "title": "Запрет создания сервиса через HTML-форму",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "a2240e653bc355c3d4ca073d7c4e267edde61f1154378127bb0b6e9943d4ecc6"
+    },
+    {
+      "number": 56,
+      "commit": "96b275715248d97301f3f8489cd27f19bac465d8",
+      "title": "Обработка повреждённого JSON",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "6e1950a3ce9856d4cd8c7188c728817e111e6fa17d01ac1b9642d2034b491978"
+    },
+    {
+      "number": 57,
+      "commit": "ba21d277991c0f011e1f22588b8bbbc288079f12",
+      "title": "Проверка ограничения размера запроса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "1077d8c34f2ffaf7d3addd95d3ba403eab33b03676c1e82daad683f2ac9f818c"
+    },
+    {
+      "number": 58,
+      "commit": "8a960fce6d9542599f01a63442525124ddef2682",
+      "title": "Тест создания сервиса из массива",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "4202b65560eebf97d83142e84e489a16181965f5991a9bf7be48fa0b7743d434"
+    },
+    {
+      "number": 59,
+      "commit": "fd5cab94212f009d0e1ee6c5c930fa920e0f9c40",
+      "title": "Сброс расписания при редактировании",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "9cd4970dd36530380a6148eeab0a91936e5e44ba57a45c814e4442018a5294ff"
+    },
+    {
+      "number": 60,
+      "commit": "6acb1a75e39ab578f802f9c6a388b82c2e11aed5",
+      "title": "Сохранение настроек при ошибке редактирования",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "43eea0fb982bac40b8fd8cba8f334c6d09ac094866b9db9d8643de0012b994de"
+    },
+    {
+      "number": 61,
+      "commit": "641bd7b71b323f386151ce1ae59cc1afaa59cfb0",
+      "title": "Тест ручного запуска проверки",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "bb36a2a742f47247334bb5541213084b56ac54e1f0bd2c4667c5bebf6ad21caa"
+    },
+    {
+      "number": 62,
+      "commit": "2e7493ef7317c85b1920ce379da52a6a996272ba",
+      "title": "Тест повторного запуска занятой проверки",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "4598a5a27fcd723cabbe662f6b2398d6c35add21429afc1491a20cebe8a11b0f"
+    },
+    {
+      "number": 63,
+      "commit": "7aa78c12e25dcff18a1ed8b211c280bef6d86a49",
+      "title": "Статус сервиса до первой проверки",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "ac2fd37c12a6bf82097ffac4026b6c1156a10b2734afaddc80bd8f1ebd3caa0b"
+    },
+    {
+      "number": 64,
+      "commit": "7e72dc0ca9254da4cc542f3bd55d14491f4a58be",
+      "title": "Статус сервиса после успешного ответа",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "1b767a3f8a4d2b52b32cc724a3e717ffecbfd34a3fa3f50e0e5a215180df7884"
+    },
+    {
+      "number": 65,
+      "commit": "8fefe8867ff184f9746bed63ef592db7b4e50a7b",
+      "title": "Статус сервиса после ошибки",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "0e8fb01781832b61f1ec53f8be583110900fc3bf14a8276fce7a6fbf47ba326c"
+    },
+    {
+      "number": 66,
+      "commit": "2e557fb0ecc532783867eac0b143b62e00776b30",
+      "title": "Пауза имеет приоритет над результатом проверки",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "528ed242f7708169872bf7923361fb61f00e5c45f2569fffb7a6c9be701aff5c"
+    },
+    {
+      "number": 67,
+      "commit": "0b19d87d822e3e8ed8ff0d3c181f582be66ffb09",
+      "title": "Поиск по адресу без учёта регистра",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "7ea1537da3dff9142229e05b30752903e8091296ee40e535fd9d148622cf8502"
+    },
+    {
+      "number": 68,
+      "commit": "e0425ed01c369ba72b59f75be339b41b32b811f2",
+      "title": "Фильтр сервисов по категории",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "38bc4ece2e266f0e622d8b413a871de6d723de6b288e2597803a7855d08db603"
+    },
+    {
+      "number": 69,
+      "commit": "274fd83aa1592829e714d67e7534aa66ad914423",
+      "title": "Тест расчёта доступности",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "2c916997088e6d201857a1b892b5a702d869ea93087baa070ef02955de10f940"
+    },
+    {
+      "number": 70,
+      "commit": "1f70c04a30f92b36764462548917d4697e81e269",
+      "title": "Тест среднего времени отклика",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "036711386da659a4be7d54188732e96527d0375c865bfca4f42cfa2776b9678a"
+    },
+    {
+      "number": 71,
+      "commit": "331db840128a2f9fdd27bda251de245d5b35e460",
+      "title": "Изоляция истории разных сервисов",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "a6152fdc2810c0b3e8506f7a64d83998bdc7458d235f6d1f3f39395d7b90caf6"
+    },
+    {
+      "number": 72,
+      "commit": "8fa81b3b650960dd9e55b57dd3f1bbda16a4a7b4",
+      "title": "Ограничение размера истории проверок",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "770021111b28c43d884bb3f6f3be17d71c16c563f6630da07904ea106a4b98c2"
+    },
+    {
+      "number": 73,
+      "commit": "811a8c6a4b722c1ddb6148ab966eab23f711b5b1",
+      "title": "Проверка формата CSV-отчёта",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "fd1bb83fb2bab1629e51edb538bbebc70d0e7b43102df4309b56cdf7f5a756f8"
+    },
+    {
+      "number": 74,
+      "commit": "f5fdc226c699163920439edcef1aa212bbf2225c",
+      "title": "Защитные заголовки в ответах API",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "21543245e2b94040bfd0c32c433ce915ef9f9da7aa7f8652e01bf2047970ec6c"
+    },
+    {
+      "number": 75,
+      "commit": "2ad353dd1f40ac5bf92e40b3200be2840da9b334",
+      "title": "Запрет доступа к исходникам через HTTP",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "58a99fc084a529a2eeeb82d1c5991fa34a1cdcf91086dec7813780a3569f67a2"
+    },
+    {
+      "number": 76,
+      "commit": "29d4e3899a140f9d15d82b1f297d9ff82a45f87f",
+      "title": "Результат удалённого сервиса не сохраняется",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "232ac4b7d02bb6d804a9d450b52ac757f5f842821c6df8e2d9e173b55ef8779f"
+    },
+    {
+      "number": 77,
+      "commit": "8c6a193f00d8a2db2fb452481520e4faf6a5b205",
+      "title": "Открытие инцидента при первом сбое",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "6e30d47c4e15aa2b9ec240ec210f070802f146836dd2f5aa4c986e05c32d325a"
+    },
+    {
+      "number": 78,
+      "commit": "cfb455eff38b930acaff6cb2925372178fb408cf",
+      "title": "Повторные ошибки не дублируют инцидент",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "1acaf2ff3245f9112c34e52948b74d75379054d1f2da2bed462be71f6f6c9221"
+    },
+    {
+      "number": 79,
+      "commit": "c43b717c2805a2c405f63037981b054d0c9197ec",
+      "title": "Закрытие инцидента после восстановления",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "0228351bb253cbd485ce75ea07c042c4eb2999e18805e03a3af1b18e57ffcea5"
+    },
+    {
+      "number": 80,
+      "commit": "5c5e891720a49dcc0326ea1e4835dbcb18dfa3a0",
+      "title": "Успешные проверки не создают инцидентов",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c740f91478ea4fb5f9c078bfd4daed8e20623898529ae289a30264b3a0db718b"
+    },
+    {
+      "number": 81,
+      "commit": "b764a128189ce27efc8266533cb6b1bb0f2cb555",
+      "title": "Новый инцидент после повторного сбоя",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "cfcff76b1367cf26b42fa30396f183d80b3d46230175fd55193c082f8c8f410f"
+    },
+    {
+      "number": 82,
+      "commit": "95ff35563fac5aac546ac22df206a87a5374f74d",
+      "title": "Изоляция инцидентов разных сервисов",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "6b06777287dba63f6a58757ef83204fbf510baa32cb9c1098ab1b691949949df"
+    },
+    {
+      "number": 83,
+      "commit": "3d203af85aca75f5f74ac5a3098c742cbc01a99a",
+      "title": "Сохранение первоначальной причины сбоя",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "6d7d6953ec1a72e65f8a00fabbf68a7f949c7c7b48fb68cebe6cb314cc1a3c1c"
+    },
+    {
+      "number": 84,
+      "commit": "ce290b33bc60c5c7f556f42e4c948c50a9d4ea19",
+      "title": "Причина сбоя при пустом сообщении",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "c47453aed8a9be3db468902e3786150fc5f37a309f2816e0db3cf0d503dddf4a"
+    },
+    {
+      "number": 85,
+      "commit": "ba0399702174287771adb8d7a0c5b21964beade9",
+      "title": "Таймаут без HTTP-кода в истории",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "756c9fce4ccf3066e839418cbdafbdf228945721843fddf2b953d3f06db65273"
+    },
+    {
+      "number": 86,
+      "commit": "78541a2563abbc529643c2538a08431d6be96f22",
+      "title": "Сохранение дробного времени отклика",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "d60fa005005c4212219c9e757892dd2587734a023d5a69bd3d4088132778b103"
+    },
+    {
+      "number": 87,
+      "commit": "bc917520e3fabf09e49e6d174a1752ca58e7a0df",
+      "title": "Чтение истории после открытия базы заново",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "f7b38dbd068cbb034baf69ca4df0ea9977eef5a4f1959baca0b6cdce2676f52f"
+    },
+    {
+      "number": 88,
+      "commit": "be98939b8b28a73acfc527c72ad5116cf6e81355",
+      "title": "Откат транзакции при ошибке",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "6e1bbde618ffc165590715cd80399b233b796e8a1daf3889d106c39678b29f00"
+    },
+    {
+      "number": 89,
+      "commit": "3f7f69997f595cbee80f5592c4684f5aaa780796",
+      "title": "Проверка внешних ключей истории",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "81d27c41e8e185bbb1c6bda14c36a75d45fdfa59e2ea9c8a4b7cf652240221b9"
+    },
+    {
+      "number": 90,
+      "commit": "7ef2e178b976f64455ad2903c71dcdc1322ad21d",
+      "title": "Удаление истории вместе с сервисом",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "f81db86260df374783e7d4645837da89d42b83165498d9b10fa0a91ecfe97d25"
+    },
+    {
+      "number": 91,
+      "commit": "3cb14eeadbf4a284a7a2f636774635f56329731e",
+      "title": "Удаление сервиса не затрагивает соседний",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "7995502d69bdb9b9549c4ab0eafcc7e4c3c790efd11c7390de2ee99c82d3e3a0"
+    },
+    {
+      "number": 92,
+      "commit": "e7c02ad29cb10cab04d4b5914d8f7a34030d2265",
+      "title": "Защита CSV от формул со знаком равенства",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "876290f857f613070ff2d62cbdedf8b6ec25c2621436ce2bef5315d6b498341b"
+    },
+    {
+      "number": 93,
+      "commit": "11d557a5ac5ad4d67f88c9f569dbe2632412dd4f",
+      "title": "Защита CSV от формул со знаком плюс",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "9e2cc81a8cb06ca24868b6f88d85ba9d87ee961d6628d19670d4fe6386e3a40e"
+    },
+    {
+      "number": 94,
+      "commit": "167887e582329d7082de134349ac5c7cd370877c",
+      "title": "Защита CSV от формул со знаком минус",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "1f059b79861ecc3c46b8efe99423798520503dc08a41a5f69ad5f8df8a55aaf0"
+    },
+    {
+      "number": 95,
+      "commit": "521c8399f89a91736324e5c446a8dfd65d61fd6b",
+      "title": "Защита CSV от формул с символом @",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "fce1e2595bae7514b5e9abf44bd57c2a801542182b7230cd513d15e24d53af4f"
+    },
+    {
+      "number": 96,
+      "commit": "79fffc3cf04805bca6ff754dae6f81e55c826db3",
+      "title": "Экранирование разделителя в CSV",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "98dd12a9bba7126ce914d916d8027dafcd04c2b18d3ee64158dcc719c8cdd131"
+    },
+    {
+      "number": 97,
+      "commit": "6d8b70330dd1b0349dffa26a715fd48744048652",
+      "title": "Старые проверки не попадают в текущую статистику",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "62c97853715d609421673f0dadb8c44d967b026a3b7af2646227c649b0f398ce"
+    },
+    {
+      "number": 98,
+      "commit": "d3e7d74df68f4178afffbc30b02ef34d9a543cf8",
+      "title": "Открытый инцидент остаётся виден за выбранный период",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "d6fefc05dcf680718a2175d82975d06ec6b306e5fd23b29aca5c15f34acee736"
+    },
+    {
+      "number": 99,
+      "commit": "8997fafc5a223574c064c645a8ed17963ac593b5",
+      "title": "Скрытие давно закрытых инцидентов",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "e4376a1759a752ad9ff3d6034fb3729777a6a55f578196a43afffde21cd82209"
+    },
+    {
+      "number": 100,
+      "commit": "9a770c7b314f13c913c2dff3607f4af6fcfa6814",
+      "title": "Пустая история нового сервиса",
+      "files": [
+        "tests/test_prepared_regressions.py"
+      ],
+      "sha256": "2a552c2aa50b185007d5bc475c9d5884220cefe83d099ec093a36dd8eb73bf1a"
+    }
+  ],
+  "repository": "akiooooo/Service-Monitoring"
+}
