@@ -200,3 +200,7 @@ class PreparedRegressionTests(unittest.TestCase):
         with self.assertRaises(APIError):
             validate({"name": "API", "url": "https://example.test", 'expected_code': 600})
 
+    def test_032(self):
+        with self.assertRaises(APIError):
+            validate({"name": "API", "url": "https://example.test", 'interval': True})
+
