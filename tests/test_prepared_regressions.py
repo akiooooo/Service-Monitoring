@@ -403,3 +403,10 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertIsNone(rows[0]["resolved_at"])
 
+    def test_078(self):
+        sid = self.add()
+        for _ in range(5):
+            self.record(sid, False)
+        self.assertEqual(len(self.rows("SELECT * FROM incidents")), 1)
+        self.assertEqual(len(self.rows("SELECT * FROM checks")), 5)
+
