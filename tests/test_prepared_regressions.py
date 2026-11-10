@@ -216,3 +216,8 @@ class PreparedRegressionTests(unittest.TestCase):
         with self.assertRaises(APIError):
             validate({"name": "API", "url": "https://example.test", 'enabled': 'false'})
 
+    def test_036(self):
+        data = validate({"name": "x"*100, "url": "http://[::1]:8080/health", "category": "x"*50,
+            "interval": 10, "timeout": 60, "expected_code": 599, "enabled": False})
+        self.assertEqual((data["interval"], data["timeout"], data["expected_code"], data["enabled"]), (10, 60, 599, 0))
+
