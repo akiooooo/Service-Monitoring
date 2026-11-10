@@ -1,0 +1,74 @@
+import csv
+import http.client
+import io
+import json
+import sqlite3
+import tempfile
+import threading
+import unittest
+from pathlib import Path
+from unittest.mock import Mock, patch
+
+from monitor.checker import Monitor
+from monitor.database import Database
+from monitor.server import APIError, Server, make_handler, validate
+
+
+class PreparedRegressionTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.db = Database(Path(self.temp.name) / "monitor.db")
+        self.monitor = Mock()
+        self.monitor.submit.return_value = True
+        self.server = None
+
+    def tearDown(self):
+        if self.server:
+            self.server.shutdown()
+            self.server.server_close()
+            self.thread.join()
+        self.temp.cleanup()
+
+    def add(self, **extra):
+        data = validate({"name": "Сервис", "url": "https://example.test", **extra})
+        with self.db.connect() as conn:
+            return conn.execute("""INSERT INTO services
+                (name,url,category,interval,timeout,expected_code,enabled,created_at)
+                VALUES(:name,:url,:category,:interval,:timeout,:expected_code,:enabled,'2026-01-01')""", data).lastrowid
+
+    def rows(self, query, values=()):
+        with self.db.connect() as conn:
+            return [dict(row) for row in conn.execute(query, values)]
+
+    def record(self, service_id, ok=True, **extra):
+        self.db.record(service_id, {"ok": ok, "response_ms": 12.5,
+            "status_code": 200 if ok else 503, "error": None if ok else "HTTP 503", **extra})
+
+    def request(self, path, method="GET", data=None, headers=None, raw=None):
+        if self.server is None:
+            self.server = Server(("127.0.0.1", 0), make_handler(self.db, self.monitor))
+            self.thread = threading.Thread(target=lambda: self.server.serve_forever(poll_interval=.01), daemon=True)
+            self.thread.start()
+        body = raw if raw is not None else json.dumps(data).encode() if data is not None else None
+        conn = http.client.HTTPConnection("127.0.0.1", self.server.server_port, timeout=5)
+        try:
+            conn.request(method, path, body, {"Content-Type": "application/json", **(headers or {})})
+            response = conn.getresponse()
+            content = response.read()
+            result = json.loads(content) if "json" in response.getheader("Content-Type", "") else content
+            return response.status, result, dict(response.getheaders())
+        finally:
+            conn.close()
+
+    def test_001(self):
+        monitor = Monitor(self.db)
+        service = {"id": 1}
+        monitor.running.add(1)
+        try:
+            with patch("monitor.checker.probe", return_value={}), patch.object(self.db, "record"), patch.object(self.db, "connect", side_effect=sqlite3.OperationalError("disk full")):
+                with self.assertRaises(sqlite3.OperationalError):
+                    monitor.run(service)
+            self.assertNotIn(1, monitor.running)
+        finally:
+            monitor.pool.shutdown(wait=True)
+

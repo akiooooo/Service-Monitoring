@@ -75,11 +75,13 @@ class Monitor:
         except Exception:
             logging.exception("Не удалось сохранить проверку сервиса %s", service["id"])
         finally:
-            with self.db.connect() as db:
-                db.execute("UPDATE services SET next_check=?+interval WHERE id=?",
-                           (time.time(), service["id"]))
-            with self.lock:
-                self.running.discard(service["id"])
+            try:
+                with self.db.connect() as db:
+                    db.execute("UPDATE services SET next_check=?+interval WHERE id=?",
+                               (time.time(), service["id"]))
+            finally:
+                with self.lock:
+                    self.running.discard(service["id"])
 
     def loop(self):
         while not self.stop_event.is_set():
