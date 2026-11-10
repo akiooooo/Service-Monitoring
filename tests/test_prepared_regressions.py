@@ -305,3 +305,8 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(self.request(f"/api/services/{sid}", "PUT", {"name": "Изменён", "url": "https://new.test"})[0], 200)
         self.assertEqual(self.db.service(sid)["next_check"], 0)
 
+    def test_060(self):
+        sid = self.add()
+        self.assertEqual(self.request(f"/api/services/{sid}", "PUT", {"name": ""})[0], 400)
+        self.assertEqual(self.db.service(sid)["name"], "Сервис")
+
