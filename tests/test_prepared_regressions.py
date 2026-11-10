@@ -458,3 +458,11 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(self.add(), response_ms=0.125)
         self.assertEqual(self.rows("SELECT * FROM checks")[0]["response_ms"], .125)
 
+    def test_087(self):
+        sid = self.add()
+        self.record(sid, False)
+        reopened = Database(self.db.path)
+        self.assertEqual(reopened.service(sid)["name"], "Сервис")
+        with reopened.connect() as conn:
+            self.assertEqual(conn.execute("SELECT COUNT(*) FROM checks").fetchone()[0], 1)
+
