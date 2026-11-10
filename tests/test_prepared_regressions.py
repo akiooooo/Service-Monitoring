@@ -82,3 +82,8 @@ class PreparedRegressionTests(unittest.TestCase):
             validate('abc')
         self.assertEqual(error.exception.status, 400)
 
+    def test_004(self):
+        with self.assertRaises(APIError) as error:
+            validate(42)
+        self.assertEqual(error.exception.status, 400)
+
