@@ -523,3 +523,11 @@ class PreparedRegressionTests(unittest.TestCase):
         rows = list(csv.reader(io.StringIO(self.request("/api/report.csv")[1].decode("utf-8-sig")), delimiter=";"))
         self.assertEqual(rows[1][0], 'Сервис; "API"')
 
+    def test_097(self):
+        sid = self.add()
+        self.record(sid)
+        with self.db.connect() as conn:
+            conn.execute("INSERT INTO checks(service_id,checked_at,ok,response_ms) VALUES(?,'2000-01-01',0,999)", (sid,))
+        row = self.request("/api/services?hours=1")[1][0]
+        self.assertEqual((row["total"], row["uptime"]), (1, 100))
+
