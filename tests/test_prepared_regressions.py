@@ -241,3 +241,6 @@ class PreparedRegressionTests(unittest.TestCase):
         status, body, _ = self.request("/api/health")
         self.assertEqual((status, body), (200, {"status": "ok"}))
 
+    def test_042(self):
+        self.assertEqual(self.request("/api/services")[:2], (200, []))
+
