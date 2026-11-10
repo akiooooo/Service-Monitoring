@@ -292,3 +292,6 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(self.request("/api/services", "POST", raw=b'{broken')[0], 400)
         self.assertEqual(self.rows("SELECT * FROM services"), [])
 
+    def test_057(self):
+        self.assertEqual(self.request("/api/services", "POST", raw=b" "*16385)[0], 400)
+
