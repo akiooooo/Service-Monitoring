@@ -343,3 +343,8 @@ class PreparedRegressionTests(unittest.TestCase):
         self.add(url="https://other.test")
         self.assertEqual(len(self.request("/api/services?q=BACKEND")[1]), 1)
 
+    def test_068(self):
+        self.add(category="Backend")
+        self.add(category="Frontend")
+        self.assertEqual([s["category"] for s in self.request("/api/services?category=Backend")[1]], ["Backend"])
+
