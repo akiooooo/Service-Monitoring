@@ -369,3 +369,10 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual([c["service_id"] for c in history["checks"]], [sid])
         self.assertEqual(history["incidents"], [])
 
+    def test_072(self):
+        sid = self.add()
+        with self.db.connect() as conn:
+            conn.executemany("INSERT INTO checks(service_id,checked_at,ok,response_ms) VALUES(?,?,1,1)",
+                [(sid, "2099-01-01T00:00:00+00:00")]*505)
+        self.assertEqual(len(self.request(f"/api/services/{sid}/history")[1]["checks"]), 500)
+
