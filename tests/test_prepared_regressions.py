@@ -391,3 +391,8 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_075(self):
         self.assertEqual(self.request("/../monitor/database.py")[0], 404)
 
+    def test_076(self):
+        self.record(123456, False)
+        self.assertEqual(self.rows("SELECT * FROM checks"), [])
+        self.assertEqual(self.rows("SELECT * FROM incidents"), [])
+
