@@ -466,3 +466,11 @@ class PreparedRegressionTests(unittest.TestCase):
         with reopened.connect() as conn:
             self.assertEqual(conn.execute("SELECT COUNT(*) FROM checks").fetchone()[0], 1)
 
+    def test_088(self):
+        sid = self.add()
+        with self.assertRaises(RuntimeError):
+            with self.db.connect() as conn:
+                conn.execute("UPDATE services SET name='Повреждён' WHERE id=?", (sid,))
+                raise RuntimeError("rollback")
+        self.assertEqual(self.db.service(sid)["name"], "Сервис")
+
