@@ -295,3 +295,6 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_057(self):
         self.assertEqual(self.request("/api/services", "POST", raw=b" "*16385)[0], 400)
 
+    def test_058(self):
+        self.assertEqual(self.request("/api/services", "POST", [1, 2])[0], 400)
+
