@@ -338,3 +338,8 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(self.add(enabled=False), False)
         self.assertEqual(self.request("/api/services?status=paused")[1][0]["status"], "paused")
 
+    def test_067(self):
+        self.add(url="https://Backend.example.test")
+        self.add(url="https://other.test")
+        self.assertEqual(len(self.request("/api/services?q=BACKEND")[1]), 1)
+
