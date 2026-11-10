@@ -330,3 +330,7 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(self.add())
         self.assertEqual(self.request("/api/services")[1][0]["status"], "up")
 
+    def test_065(self):
+        self.record(self.add(), False)
+        self.assertEqual(self.request("/api/services")[1][0]["status"], "down")
+
