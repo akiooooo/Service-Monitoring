@@ -257,3 +257,6 @@ class PreparedRegressionTests(unittest.TestCase):
     def test_045(self):
         self.assertEqual(self.request('/api/services/9999')[0], 404)
 
+    def test_046(self):
+        self.assertEqual(self.request('/api/services/not-a-number')[0], 404)
+
