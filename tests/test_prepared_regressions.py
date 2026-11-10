@@ -396,3 +396,10 @@ class PreparedRegressionTests(unittest.TestCase):
         self.assertEqual(self.rows("SELECT * FROM checks"), [])
         self.assertEqual(self.rows("SELECT * FROM incidents"), [])
 
+    def test_077(self):
+        sid = self.add()
+        self.record(sid, False)
+        rows = self.rows("SELECT * FROM incidents")
+        self.assertEqual(len(rows), 1)
+        self.assertIsNone(rows[0]["resolved_at"])
+
