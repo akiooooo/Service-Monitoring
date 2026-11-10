@@ -518,3 +518,8 @@ class PreparedRegressionTests(unittest.TestCase):
         rows = list(csv.reader(io.StringIO(body.decode("utf-8-sig")), delimiter=";"))
         self.assertTrue(rows[1][0].startswith("'" + '@'))
 
+    def test_096(self):
+        self.add(name='Сервис; "API"')
+        rows = list(csv.reader(io.StringIO(self.request("/api/report.csv")[1].decode("utf-8-sig")), delimiter=";"))
+        self.assertEqual(rows[1][0], 'Сервис; "API"')
+
