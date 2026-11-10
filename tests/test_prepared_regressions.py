@@ -438,3 +438,9 @@ class PreparedRegressionTests(unittest.TestCase):
         self.record(first)
         self.assertIsNone(self.rows("SELECT * FROM incidents WHERE service_id=?", (second,))[0]["resolved_at"])
 
+    def test_083(self):
+        sid = self.add()
+        self.record(sid, False, error="DNS failure")
+        self.record(sid, False, error="Timeout")
+        self.assertEqual(self.rows("SELECT * FROM incidents")[0]["reason"], "DNS failure")
+
