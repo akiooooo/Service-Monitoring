@@ -494,3 +494,9 @@ class PreparedRegressionTests(unittest.TestCase):
         self.request(f"/api/services/{first}", "DELETE")
         self.assertEqual([r["service_id"] for r in self.rows("SELECT * FROM checks")], [second])
 
+    def test_092(self):
+        self.add(name='=SUM(1)')
+        body = self.request("/api/report.csv")[1]
+        rows = list(csv.reader(io.StringIO(body.decode("utf-8-sig")), delimiter=";"))
+        self.assertTrue(rows[1][0].startswith("'" + '='))
+
