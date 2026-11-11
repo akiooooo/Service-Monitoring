@@ -27,23 +27,6 @@
 - Доступность за 24 часа, 7 и 30 дней, отчёт CSV.
 - Хранение данных между запусками.
 
-
-<details>
-<summary>Карточка сервиса</summary>
-
-![Проверки и история сервиса](docs/screenshots/service.png)
-
-</details>
-
-<details>
-<summary>Мобильный экран</summary>
-
-<img src="docs/screenshots/mobile.png" alt="Мобильный интерфейс" width="320">
-
-</details>
-
-На скриншотах только локальные демонстрационные сервисы.
-
 ## Запуск
 
 Нужен **Python 3.11+**:
