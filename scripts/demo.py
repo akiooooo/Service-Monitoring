@@ -45,7 +45,7 @@ def main():
                     db.execute("""INSERT INTO services(name,url,category,interval,timeout,expected_code,created_at)
                         VALUES (?,?,'Демо',10,3,200,?)""", (name, url, now()))
     server = ThreadingHTTPServer(("127.0.0.1", args.port), DemoHandler)
-    print(f"Демо-стенд: http://127.0.0.1:{args.port} · Ctrl+C для выхода", flush=True)
+    print(f"Demo: http://127.0.0.1:{args.port} (Ctrl+C to stop)", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

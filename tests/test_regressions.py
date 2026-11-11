@@ -14,7 +14,7 @@ from monitor.database import Database
 from monitor.server import APIError, Server, make_handler, validate
 
 
-class PreparedRegressionTests(unittest.TestCase):
+class RegressionTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.db = Database(Path(self.temp.name) / "monitor.db")
@@ -60,15 +60,36 @@ class PreparedRegressionTests(unittest.TestCase):
         finally:
             conn.close()
 
-    def test_001(self):
+    def test_database_failure_releases_running_check(self):
         monitor = Monitor(self.db)
         service = {"id": 1}
         monitor.running.add(1)
         try:
             with patch("monitor.checker.probe", return_value={}), patch.object(self.db, "record"), patch.object(self.db, "connect", side_effect=sqlite3.OperationalError("disk full")):
-                with self.assertRaises(sqlite3.OperationalError):
+                with self.assertLogs(level="ERROR"):
                     monitor.run(service)
             self.assertNotIn(1, monitor.running)
         finally:
             monitor.pool.shutdown(wait=True)
+
+    def test_scheduler_retries_after_database_error(self):
+        monitor = Monitor(self.db)
+        original = self.db.connect
+        retried = threading.Event()
+
+        def connect():
+            if not retried.is_set():
+                retried.set()
+                raise sqlite3.OperationalError("database is locked")
+            monitor.stop_event.set()
+            return original()
+
+        try:
+            with patch.object(self.db, "connect", side_effect=connect), self.assertLogs(level="ERROR"):
+                monitor.start()
+                monitor.thread.join(timeout=4)
+                self.assertFalse(monitor.thread.is_alive())
+                self.assertGreaterEqual(self.db.connect.call_count, 2)
+        finally:
+            monitor.stop()
 

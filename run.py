@@ -19,7 +19,7 @@ def main():
     monitor = Monitor(database)
     server = Server((args.host, args.port), make_handler(database, monitor))
     monitor.start()
-    print(f"Пульс запущен: http://{args.host}:{args.port}", flush=True)
+    print(f"Pulse: http://{args.host}:{args.port}", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

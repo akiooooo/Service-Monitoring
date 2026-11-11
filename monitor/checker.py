@@ -1,6 +1,7 @@
 import socket
 import logging
 import ssl
+import sqlite3
 import threading
 import time
 import urllib.error
@@ -79,15 +80,21 @@ class Monitor:
                 with self.db.connect() as db:
                     db.execute("UPDATE services SET next_check=?+interval WHERE id=?",
                                (time.time(), service["id"]))
+            except sqlite3.Error:
+                logging.exception("Не удалось обновить расписание сервиса %s", service["id"])
             finally:
                 with self.lock:
                     self.running.discard(service["id"])
 
     def loop(self):
         while not self.stop_event.is_set():
-            with self.db.connect() as db:
-                rows = db.execute("SELECT * FROM services WHERE enabled=1 AND next_check<=?",
-                                  (time.time(),)).fetchall()
-            for row in rows:
-                self.submit(dict(row))
+            try:
+                with self.db.connect() as db:
+                    rows = db.execute("SELECT * FROM services WHERE enabled=1 AND next_check<=?",
+                                      (time.time(),)).fetchall()
+                for row in rows:
+                    self.submit(dict(row))
+            except sqlite3.Error:
+                # Временная ошибка базы не должна навсегда останавливать мониторинг.
+                logging.exception("Не удалось прочитать расписание, повторим через секунду")
             self.stop_event.wait(1)
