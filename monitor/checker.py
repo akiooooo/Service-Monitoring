@@ -40,12 +40,14 @@ def probe(service):
 
 
 class Monitor:
-    def __init__(self, database):
+    def __init__(self, database, notify=None):
         self.db = database
+        self.notify = notify
         self.stop_event = threading.Event()
         self.lock = threading.Lock()
         self.running = set()
         self.pool = ThreadPoolExecutor(max_workers=8, thread_name_prefix="probe")
+        self.notifications = ThreadPoolExecutor(max_workers=1, thread_name_prefix="notify") if notify else None
         self.thread = threading.Thread(target=self.loop, daemon=True, name="scheduler")
 
     def start(self):
@@ -55,6 +57,8 @@ class Monitor:
         self.stop_event.set()
         self.thread.join()
         self.pool.shutdown(wait=True)
+        if self.notifications is not None:
+            self.notifications.shutdown(wait=True)
 
     def submit(self, service):
         with self.lock:
@@ -72,9 +76,12 @@ class Monitor:
     def run(self, service):
         try:
             result = probe(service)
-            self.db.record(service["id"], result)
+            incident_changed = self.db.record(service["id"], result)
         except Exception:
             logging.exception("Не удалось сохранить проверку сервиса %s", service["id"])
+        else:
+            if incident_changed and self.notifications is not None:
+                self.notifications.submit(self.notify, service, result)
         finally:
             try:
                 with self.db.connect() as db:

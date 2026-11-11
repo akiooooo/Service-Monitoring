@@ -5,6 +5,7 @@ from pathlib import Path
 
 from monitor.checker import Monitor
 from monitor.database import Database
+from monitor.notifications import load_notifier
 from monitor.server import Server, make_handler
 
 
@@ -16,7 +17,7 @@ def main():
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     database = Database(args.db)
-    monitor = Monitor(database)
+    monitor = Monitor(database, notify=load_notifier())
     server = Server((args.host, args.port), make_handler(database, monitor))
     monitor.start()
     print(f"Pulse: http://{args.host}:{args.port}", flush=True)

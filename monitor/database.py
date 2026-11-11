@@ -61,13 +61,14 @@ class Database:
         timestamp = now()
         with self.connect() as db:
             if not db.execute("SELECT 1 FROM services WHERE id=?", (service_id,)).fetchone():
-                return
+                return False
             db.execute("""INSERT INTO checks(service_id, checked_at, ok, response_ms, status_code, error)
                           VALUES (?, ?, ?, ?, ?, ?)""", (service_id, timestamp, int(result["ok"]),
                           result["response_ms"], result["status_code"], result["error"]))
             if result["ok"]:
-                db.execute("UPDATE incidents SET resolved_at=? WHERE service_id=? AND resolved_at IS NULL",
-                           (timestamp, service_id))
+                incident = db.execute("UPDATE incidents SET resolved_at=? WHERE service_id=? AND resolved_at IS NULL",
+                                      (timestamp, service_id))
             else:
-                db.execute("INSERT OR IGNORE INTO incidents(service_id, started_at, reason) VALUES (?, ?, ?)",
-                           (service_id, timestamp, result["error"] or "Неожиданный HTTP-код"))
+                incident = db.execute("INSERT OR IGNORE INTO incidents(service_id, started_at, reason) VALUES (?, ?, ?)",
+                                      (service_id, timestamp, result["error"] or "Неожиданный HTTP-код"))
+            return incident.rowcount == 1

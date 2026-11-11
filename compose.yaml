@@ -5,6 +5,15 @@ services:
       - "127.0.0.1:8000:8000"
     volumes:
       - pulse-data:/app/data
+    environment:
+      PULSE_VK_TOKEN: ${PULSE_VK_TOKEN:-}
+      PULSE_VK_PEER_ID: ${PULSE_VK_PEER_ID:-}
+      PULSE_SMTP_HOST: ${PULSE_SMTP_HOST:-}
+      PULSE_SMTP_PORT: ${PULSE_SMTP_PORT:-}
+      PULSE_SMTP_USER: ${PULSE_SMTP_USER:-}
+      PULSE_SMTP_PASSWORD: ${PULSE_SMTP_PASSWORD:-}
+      PULSE_EMAIL_FROM: ${PULSE_EMAIL_FROM:-}
+      PULSE_EMAIL_TO: ${PULSE_EMAIL_TO:-}
     restart: unless-stopped
 volumes:
   pulse-data:
