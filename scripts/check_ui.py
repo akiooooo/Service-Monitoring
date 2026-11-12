@@ -1,4 +1,4 @@
-"""Проверка интерфейса на временной базе. Нужен Playwright и Chromium."""
+"""проверка интерфейса на временной базе, нужен Playwright и Chromium"""
 import json
 import sys
 import tempfile
